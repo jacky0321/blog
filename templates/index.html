@@ -1,0 +1,248 @@
+{% load cache %}
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+
+    <title>{{ SITE_NAME }}</title>
+
+    <meta charset="utf-8">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/sliders.js' %}"></script>
+<!--[if lt IE 9]>
+    <script src="{% static 'js/modernizr.js' %}"></script>
+<![endif]-->
+</head>
+{% with index='index' %}
+{% with body='body' %}
+{% cache 500 dashboard index body %}
+<body>
+<header>
+  <div class="logo">
+      <h1>{{ SITE_NAME }}</h1>
+      <p>{{ SITE_DESC }}</p>
+  </div>
+  <nav id="topnav" class="f_r">
+      <ul>
+          <a href="/" target="_blank">首页</a>
+          {% for category in category_list %}
+              <a href="{{ forloop.counter0 }}" target="_blank">{{ category }}</a>
+          {% endfor %}
+    </ul>
+    <script src="js/nav.js"></script>
+  </nav>
+</header>
+
+<article>
+    <div class="l_box f_l">
+        <div class="banner">
+            <div id="slide-holder">
+                <div id="slide-runner">
+                    <a href="/" target="_blank"><img id="slide-img-1" src="{% static 'images/a1.jpg' %}" alt="" /></a>
+                    <a href="/" target="_blank"><img id="slide-img-2" src="{% static 'images/a2.jpg' %}" alt="" /></a>
+                    <a href="/" target="_blank"><img id="slide-img-3" src="{% static 'images/a3.jpg' %}" alt="" /></a>
+                    <a href="/" target="_blank"><img id="slide-img-4" src="{% static 'images/a4.jpg' %}" alt="" /></a>
+                        <div id="slide-controls">
+                            <p id="slide-client" class="text"></p>
+                                <p id="slide-desc" class="text"></p>
+                                    <p id="slide-nav"></p>
+                        </div>
+                </div>
+            </div>
+            <script>
+                if(!window.slider) {
+                    var slider={};
+                }
+
+              slider.data= [
+                {
+                    "id":"slide-img-1", // 与slide-runner中的img标签id对应
+                    "client":"标题1",
+                    "desc":""           //修改描述
+                },
+                {
+                    "id":"slide-img-2",
+                    "client":"标题2",
+                    "desc":""
+                },
+                {
+                    "id":"slide-img-3",
+                    "client":"标题3",
+                    "desc":""
+                },
+                {
+                    "id":"slide-img-4",
+                    "client":"标题4",
+                    "desc":""
+                }
+              ];
+            </script>
+        </div>
+        <!-- banner代码 结束 -->
+
+
+        <div class="topnews">
+            <h2>最新文章</h2>
+                {% for article in article_list %}
+                    <div class="blogs">
+                        <ul>
+                            <h3>
+                                <a href="/">{{ article.title }}</a>
+                            </h3>
+                            <p>
+                                {{ article.desc }}
+                            </p>
+                            <p class="autor">
+                                <span class="lm f_l">
+                                    {% for tag in article.tag_id.all %}
+                                        <a href="/">{{ tag.tag }} </a>
+                                    {% endfor %}
+                                </span>
+                                <span class="dtime f_l">
+                                    {{ article.publish_date | date:'Y-m-d H:i:s' }}
+                                </span>
+                                <span class="viewnum f_r">
+                                    浏览（<a href="/">{{ article.read_count }}</a>）
+                                </span>
+                                <span class="pingl f_r">
+                                    评论（<a href="/">{{ article.articlecomment_set.all.count }}</a>）
+                                </span>
+                            </p>
+                        </ul>
+                    </div>
+                {% endfor %}
+        </div>
+
+        <div id="pagination">
+            <ul id="pagination-flickr">
+                {% if article_list.has_previous %}
+                    <li class="previous"><a href="?page={{ article_list.previous_page_number }}">&laquo;上一页</a></li>
+                {% else %}
+                    <li class="previous-off">&laquo;上一页</li>
+                {% endif %}
+                    <li class="active">{{ article_list.number }}/{{ article_list.paginator.num_pages }}</li>
+                 {% if article_list.has_next %}
+                     <li class="next"><a href="?page={{ article_list.next_page_number }}">下一页 &raquo;</a></li>
+                 {% else %}
+                      <li class="next-off">下一页 &raquo;</li>
+                  {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="r_box f_r">
+        <div class="tit01">
+            <h3>关注我</h3>
+                <div class="gzwm">
+                    <ul>
+                        <li><a class="xlwb" href="#" target="_blank">新浪微博</a></li>
+                        <li><a class="txwb" href="#" target="_blank">腾讯微博</a></li>
+                        <li><a class="rss" href="portal.php?mod=rss" target="_blank">RSS</a></li>
+                        <li><a class="wx" href="mailto:admin@admin.com">邮箱</a></li>
+                    </ul>
+                </div>
+        </div>
+    <!--tit01 end-->
+    <div class="moreSelect" id="lp_right_select">
+        <script>
+            window.onload = function ()
+            {
+                var oLi = document.getElementById("tab").getElementsByTagName("li");
+                var oUl = document.getElementById("ms-main").getElementsByTagName("div");
+                for(var i = 0; i < oLi.length; i++)
+                {
+                    oLi[i].index = i;
+                    oLi[i].onmouseover = function ()
+                    {
+                        for(var n = 0; n < oLi.length; n++) oLi[n].className="";
+                        this.className = "cur";
+                        for(var n = 0; n < oUl.length; n++) oUl[n].style.display = "none";
+                        oUl[this.index].style.display = "block"
+                    }
+                }
+            }
+        </script>
+        <div class="ms-top">
+            <ul class="hd" id="tab">
+                <li class="cur"><a href="/">浏览排行</a></li>
+                <li><a href="/">评论排行</a></li>
+                <li><a href="/">站长推荐</a></li>
+            </ul>
+        </div>
+        <div class="ms-main" id="ms-main">
+            <div style="display: block;" class="bd bd-news" >
+                <ul>
+                    {% for read in read_list %}
+                        <li><a href="/" target="_blank">{{ read.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div  class="bd bd-news">
+                <ul>
+                    {% for comment in comment_list %}
+                        <li><a href="/" target="_blank">{{ comment.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="bd bd-news">
+                <ul>
+                    {% for recommend in read_list %}
+                        <li><a href="/" target="_blank">{{ recommend.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!--ms-main end -->
+    </div>
+    <!--切换卡 moreSelect end -->
+
+    <div class="cloud">
+        <h3>标签云</h3>
+        <ul>
+            {% for tag in tag_list %}
+                <li><a href="{% url 'tagArticle' %}?tag={{ tag.tag }}">{{ tag.tag }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="tuwen">
+        <h3>文章归档</h3>
+        <ul>
+            {% for article_pub in article_pub_list %}
+                {% for art in article_pub %}
+                    <li>
+                        <p><span class="tutime font-size-18"><a href=''>{{ art  }}</a></span></p>
+                    </li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="links">
+        <h3>友情链接</h3>
+        <ul>
+            {% for link in link_list %}
+                <li><a href="{{ link.link_url }}" target="_blank">{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+  <!--r_box end -->
+</article>
+
+        <footer>
+            <p class="ft-copyright">任凯杰个人博客 ICP备1405040034号</p>
+            <div id="tbox">
+                <a id="togbook" href="/"></a>
+                <a id="gotop" href="#top"></a>
+            </div>
+        </footer>
+    </body>
+    {% endcache %}
+    {% endwith %}
+    {% endwith %}
+</html>

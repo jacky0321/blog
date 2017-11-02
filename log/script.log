@@ -1,0 +1,1793 @@
+2017-03-11 22:08:07,645
+                        [Thread-2:5660]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/article/add/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\mysql\base.py", line 112, in execute
+    return self.cursor.execute(query, args)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 166, in execute
+    result = self._query(query)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 852, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1053, in _read_query_result
+    result.read()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1336, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1010, in _read_packet
+    packet.check_error()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 393, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python35\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`test`.`django_admin_log`, CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`))')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1435, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1382, in changeform_view
+    self.log_addition(request, new_object, change_message)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 716, in log_addition
+    change_message=message,
+  File "D:\Python35\lib\site-packages\django\contrib\admin\models.py", line 27, in log_action
+    change_message=change_message,
+  File "D:\Python35\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 401, in create
+    obj.save(force_insert=True, using=self.db)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 700, in save
+    force_update=force_update, update_fields=update_fields)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 728, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 812, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 851, in _do_insert
+    using=using, raw=raw)
+  File "D:\Python35\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 1039, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\compiler.py", line 1064, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "D:\Python35\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\mysql\base.py", line 112, in execute
+    return self.cursor.execute(query, args)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 166, in execute
+    result = self._query(query)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 852, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1053, in _read_query_result
+    result.read()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1336, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1010, in _read_packet
+    packet.check_error()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 393, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python35\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`test`.`django_admin_log`, CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`))')
+2017-03-11 22:25:20,294
+                        [Thread-2:4932]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/article/add/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\mysql\base.py", line 112, in execute
+    return self.cursor.execute(query, args)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 166, in execute
+    result = self._query(query)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 852, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1053, in _read_query_result
+    result.read()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1336, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1010, in _read_packet
+    packet.check_error()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 393, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python35\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`test`.`django_admin_log`, CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`))')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1435, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1382, in changeform_view
+    self.log_addition(request, new_object, change_message)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 716, in log_addition
+    change_message=message,
+  File "D:\Python35\lib\site-packages\django\contrib\admin\models.py", line 27, in log_action
+    change_message=change_message,
+  File "D:\Python35\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 401, in create
+    obj.save(force_insert=True, using=self.db)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 700, in save
+    force_update=force_update, update_fields=update_fields)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 728, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 812, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 851, in _do_insert
+    using=using, raw=raw)
+  File "D:\Python35\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 1039, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\compiler.py", line 1064, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "D:\Python35\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\mysql\base.py", line 112, in execute
+    return self.cursor.execute(query, args)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 166, in execute
+    result = self._query(query)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 852, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1053, in _read_query_result
+    result.read()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1336, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1010, in _read_packet
+    packet.check_error()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 393, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python35\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`test`.`django_admin_log`, CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`))')
+2017-03-11 22:28:02,249
+                        [Thread-11:1096]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/articlechannel/add/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\mysql\base.py", line 112, in execute
+    return self.cursor.execute(query, args)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 166, in execute
+    result = self._query(query)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 852, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1053, in _read_query_result
+    result.read()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1336, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1010, in _read_packet
+    packet.check_error()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 393, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python35\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`test`.`django_admin_log`, CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`))')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1435, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1382, in changeform_view
+    self.log_addition(request, new_object, change_message)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 716, in log_addition
+    change_message=message,
+  File "D:\Python35\lib\site-packages\django\contrib\admin\models.py", line 27, in log_action
+    change_message=change_message,
+  File "D:\Python35\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 401, in create
+    obj.save(force_insert=True, using=self.db)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 700, in save
+    force_update=force_update, update_fields=update_fields)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 728, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 812, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "D:\Python35\lib\site-packages\django\db\models\base.py", line 851, in _do_insert
+    using=using, raw=raw)
+  File "D:\Python35\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 1039, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\compiler.py", line 1064, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "D:\Python35\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "D:\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "D:\Python35\lib\site-packages\django\db\backends\mysql\base.py", line 112, in execute
+    return self.cursor.execute(query, args)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 166, in execute
+    result = self._query(query)
+  File "D:\Python35\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 852, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1053, in _read_query_result
+    result.read()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1336, in read
+    first_packet = self.connection._read_packet()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 1010, in _read_packet
+    packet.check_error()
+  File "D:\Python35\lib\site-packages\pymysql\connections.py", line 393, in check_error
+    err.raise_mysql_exception(self._data)
+  File "D:\Python35\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`test`.`django_admin_log`, CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`))')
+2017-03-11 22:47:04,383
+                        [Thread-3:4388]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-11 22:47:04,392
+                        [Thread-4:5424]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a1.jpg
+2017-03-11 22:47:04,418
+                        [Thread-5:4856]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a2.jpg
+2017-03-11 22:47:04,436
+                        [Thread-6:4544]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a3.jpg
+2017-03-11 22:47:04,452
+                        [Thread-7:2468]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a4.jpg
+2017-03-11 22:47:53,384
+                        [Thread-23:4308]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/articlecategory/add/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1435, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1382, in changeform_view
+    self.log_addition(request, new_object, change_message)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 714, in log_addition
+    object_repr=force_text(object),
+  File "D:\Python35\lib\site-packages\django\utils\encoding.py", line 76, in force_text
+    s = six.text_type(s)
+  File "D:\work\blog_project\blog\models.py", line 165, in __str__
+    return self.type
+AttributeError: 'ArticleCategory' object has no attribute 'type'
+2017-03-12 09:45:57,236
+                        [Thread-3:6028]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 09:45:57,543
+                        [Thread-4:6032]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a1.jpg
+2017-03-12 09:45:57,592
+                        [Thread-5:6036]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a2.jpg
+2017-03-12 09:45:57,632
+                        [Thread-6:5144]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a3.jpg
+2017-03-12 09:45:57,667
+                        [Thread-7:2604]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a4.jpg
+2017-03-12 09:45:59,830
+                        [Thread-8:1368]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /favicon.ico
+2017-03-12 11:17:50,096
+                        [Thread-5:1092]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/article/1/change/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Article
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1438, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Article. Check fields/fieldsets/exclude attributes of class AdminArticle.
+2017-03-12 11:18:01,584
+                        [Thread-7:2860]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/article/1/change/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Article
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1438, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Article. Check fields/fieldsets/exclude attributes of class AdminArticle.
+2017-03-12 11:19:00,495
+                        [Thread-12:4176]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/article/1/change/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Article
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1438, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Article. Check fields/fieldsets/exclude attributes of class AdminArticle.
+2017-03-12 11:20:23,412
+                        [Thread-18:2604]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/article/1/change/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Article
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1438, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Article. Check fields/fieldsets/exclude attributes of class AdminArticle.
+2017-03-12 11:20:39,742
+                        [Thread-23:5408]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/article/1/change/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Article
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1438, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Article. Check fields/fieldsets/exclude attributes of class AdminArticle.
+2017-03-12 12:18:27,631
+                        [Thread-3:5068]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 12:18:27,934
+                        [Thread-4:4056]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a1.jpg
+2017-03-12 12:18:27,989
+                        [Thread-5:820]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a2.jpg
+2017-03-12 12:18:28,002
+                        [Thread-6:2836]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 12:18:28,104
+                        [Thread-8:3264]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a4.jpg
+2017-03-12 12:18:28,147
+                        [Thread-9:4168]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a1.jpg
+2017-03-12 12:18:28,201
+                        [Thread-10:868]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a2.jpg
+2017-03-12 12:18:28,206
+                        [Thread-7:2184]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a3.jpg
+2017-03-12 12:18:28,476
+                        [Thread-11:3792]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /favicon.ico
+2017-03-12 12:27:16,372
+                        [Thread-10:2992]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/link/add/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Link
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1435, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Link. Check fields/fieldsets/exclude attributes of class AdminLink.
+2017-03-12 12:29:37,054
+                        [Thread-31:4744]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/ad/add/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Ad
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1435, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for Ad. Check fields/fieldsets/exclude attributes of class AdminAd.
+2017-03-12 12:47:17,123
+                        [Thread-29:4916]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/articlecomment/add/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for ArticleComment
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1435, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (publish_date) specified for ArticleComment. Check fields/fieldsets/exclude attributes of class AdminArticleComment.
+2017-03-12 13:02:15,488
+                        [Thread-2:1732]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /admin/blog/articlechannel/
+2017-03-12 13:02:21,330
+                        [Thread-3:4664]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /admin/blog
+2017-03-12 13:54:03,785
+                        [Thread-3:3288]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /admin/blog/user/2/change/
+2017-03-12 14:07:33,721
+                        [Thread-4:4508]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/user/2/change/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (permission) specified for User
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1438, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (permission) specified for User. Check fields/fieldsets/exclude attributes of class AdminUser.
+2017-03-12 14:10:08,250
+                        [Thread-2:4524]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/user/2/change/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (Groups, User permissions) specified for User
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1438, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (Groups, User permissions) specified for User. Check fields/fieldsets/exclude attributes of class AdminUser.
+2017-03-12 14:10:32,935
+                        [Thread-2:4784]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /admin/blog/user/2/change/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 639, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "D:\Python35\lib\site-packages\django\forms\models.py", line 257, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (permissions) specified for User
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1438, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "D:\Python35\lib\contextlib.py", line 30, in inner
+    return func(*args, **kwds)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 1367, in changeform_view
+    ModelForm = self.get_form(request, obj)
+  File "D:\Python35\lib\site-packages\django\contrib\admin\options.py", line 642, in get_form
+    % (e, self.__class__.__name__))
+django.core.exceptions.FieldError: Unknown field(s) (permissions) specified for User. Check fields/fieldsets/exclude attributes of class AdminUser.
+2017-03-12 14:39:47,302
+                        [Thread-3:4048]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 14:39:47,309
+                        [Thread-4:5148]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a1.jpg
+2017-03-12 14:39:47,323
+                        [Thread-5:5432]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a2.jpg
+2017-03-12 14:39:47,334
+                        [Thread-6:1456]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a3.jpg
+2017-03-12 14:39:47,363
+                        [Thread-7:5544]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a4.jpg
+2017-03-12 14:39:47,364
+                        [Thread-8:5716]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a1.jpg
+2017-03-12 14:39:55,832
+                        [Thread-9:3260]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /b.html
+2017-03-12 14:42:37,299
+                        [Thread-11:1452]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 14:42:37,310
+                        [Thread-13:3852]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a2.jpg
+2017-03-12 14:42:37,316
+                        [Thread-15:2180]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a4.jpg
+2017-03-12 14:42:37,323
+                        [Thread-14:1956]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /images/a3.jpg
+2017-03-12 14:43:22,578
+                        [Thread-17:1980]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 14:53:56,946
+                        [Thread-25:1448]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 15:18:02,690
+                        [Thread-26:4308]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /news.html
+2017-03-12 15:42:20,051
+                        [Thread-49:2008]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 15:43:00,837
+                        [Thread-55:1448]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 15:49:33,534
+                        [Thread-3:2184]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 15:50:15,435
+                        [Thread-14:6048]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 15:57:15,409
+                        [Thread-18:2340]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 15:57:19,005
+                        [Thread-20:5884]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 15:57:22,957
+                        [Thread-22:5032]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 15:57:29,069
+                        [Thread-24:5540]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 15:59:09,184
+                        [Thread-26:4476]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:02:10,394
+                        [Thread-29:6012]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:03:20,065
+                        [Thread-31:5844]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:03:35,751
+                        [Thread-33:4492]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:04:22,949
+                        [Thread-35:4364]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:07:09,386
+                        [Thread-37:4776]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:08:14,354
+                        [Thread-39:2064]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:08:39,621
+                        [Thread-41:4428]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:08:52,214
+                        [Thread-43:3656]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:10:31,236
+                        [Thread-45:5208]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:25:25,002
+                        [Thread-4:5516]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 28, in index
+    comment_list = article_list.order_by('-')[:6]
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 928, in order_by
+    obj.query.add_ordering(*field_names)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1665, in add_ordering
+    raise FieldError('Invalid order_by arguments: %s' % errors)
+django.core.exceptions.FieldError: Invalid order_by arguments: ['-']
+2017-03-12 16:25:50,132
+                        [Thread-2:5932]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 29, in index
+    recommend_list = article_list.filter('is_recommend' is True)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1146, in build_filter
+    arg, value = filter_expr
+TypeError: 'bool' object is not iterable
+2017-03-12 16:26:10,349
+                        [Thread-2:5956]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 29, in index
+    recommend_list = article_list.filter('is_recommend' is True)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1146, in build_filter
+    arg, value = filter_expr
+TypeError: 'bool' object is not iterable
+2017-03-12 16:27:16,684
+                        [Thread-2:4832]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 29, in index
+    recommend_list = article_list.filter('is_recommend' is True).values('title')
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1146, in build_filter
+    arg, value = filter_expr
+TypeError: 'bool' object is not iterable
+2017-03-12 16:27:48,016
+                        [Thread-2:5828]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 29, in index
+    recommend_list = article_list.filter('is_recommend' is True).values('title')
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1146, in build_filter
+    arg, value = filter_expr
+TypeError: 'bool' object is not iterable
+2017-03-12 16:28:51,498
+                        [Thread-2:5580]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 29, in index
+    recommend_list = article_list.values('title', 'is_recommend').filter('is_recommend' is True)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1146, in build_filter
+    arg, value = filter_expr
+TypeError: 'bool' object is not iterable
+2017-03-12 16:30:33,441
+                        [Thread-4:5624]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 29, in index
+    recommend_list = article_list.values('title', 'is_recommend').filter('is_recommend' is True)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1146, in build_filter
+    arg, value = filter_expr
+TypeError: 'bool' object is not iterable
+2017-03-12 16:30:40,338
+                        [Thread-5:5224]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 29, in index
+    recommend_list = article_list.values('title', 'is_recommend').filter('is_recommend' is True)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1146, in build_filter
+    arg, value = filter_expr
+TypeError: 'bool' object is not iterable
+2017-03-12 16:31:50,081
+                        [Thread-3:6132]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:32:29,813
+                        [Thread-5:5780]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:32:33,771
+                        [Thread-7:5724]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:37:29,280
+                        [Thread-7:4044]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:38:38,031
+                        [Thread-26:5936]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:39:18,298
+                        [Thread-37:4116]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:43:25,330
+                        [Thread-43:2948]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:43:27,263
+                        [Thread-44:4504]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /0.html
+2017-03-12 16:43:32,097
+                        [Thread-45:3004]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /1.html
+2017-03-12 16:46:26,723
+                        [Thread-2:6116]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /1.html
+2017-03-12 16:47:15,639
+                        [Thread-2:5224]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /1.html
+2017-03-12 16:50:06,807
+                        [Thread-2:5772]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /index.html
+2017-03-12 16:50:16,557
+                        [Thread-4:5168]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:51:26,907
+                        [Thread-3:5860]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:51:29,390
+                        [Thread-5:5652]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:51:43,849
+                        [Thread-6:6076]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /1.html
+2017-03-12 16:52:30,930
+                        [Thread-2:6028]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /1.html
+2017-03-12 16:52:34,413
+                        [Thread-3:5260]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /1.html
+2017-03-12 16:52:47,037
+                        [Thread-8:6108]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 16:52:53,835
+                        [Thread-9:1660]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /1
+2017-03-12 18:52:32,815
+                        [Thread-7:5892]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 18:52:33,110
+                        [Thread-10:6204]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 18:52:33,807
+                        [Thread-26:6788]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /favicon.ico
+2017-03-12 18:56:55,334
+                        [Thread-7:4164]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 18:58:31,867
+                        [Thread-3:1640]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 18:59:18,914
+                        [Thread-3:7080]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 18:59:40,849
+                        [Thread-9:5300]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:00:04,828
+                        [Thread-11:2604]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:00:22,946
+                        [Thread-17:6936]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:00:25,072
+                        [Thread-19:6192]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:00:31,116
+                        [Thread-21:3276]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:04:33,638
+                        [Thread-23:6076]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:04:56,044
+                        [Thread-28:6088]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /admin
+2017-03-12 19:11:30,641
+                        [Thread-3:6332]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:12:13,903
+                        [Thread-3:6864]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:12:32,909
+                        [Thread-9:6404]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:12:35,629
+                        [Thread-11:6616]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:15:21,846
+                        [Thread-21:5124]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:19:08,254
+                        [Thread-31:6260]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:40:36,156
+                        [Thread-2:5648]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 40, in index
+    print(Article.objects.raw("select distinct date_format(publish_date,'%Y-%m') from blog_article;"))
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 1255, in __repr__
+    return "<RawQuerySet: %s>" % self.query
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 96, in __str__
+    return self.sql % self.params_type(self.params)
+TypeError: not enough arguments for format string
+2017-03-12 19:43:08,113
+                        [Thread-3:4920]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:43:08,159
+                        [Thread-4:1184]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:46:02,850
+                        [Thread-2:5848]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 50, in index
+    return render(request, 'index.html', locals())
+  File "D:\Python35\lib\site-packages\django\shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "D:\Python35\lib\site-packages\django\template\loader.py", line 97, in render_to_string
+    return template.render(context, request)
+  File "D:\Python35\lib\site-packages\django\template\backends\django.py", line 95, in render
+    return self.template.render(context)
+  File "D:\Python35\lib\site-packages\django\template\base.py", line 206, in render
+    return self._render(context)
+  File "D:\Python35\lib\site-packages\django\template\base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "D:\Python35\lib\site-packages\django\template\base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "D:\Python35\lib\site-packages\django\template\base.py", line 955, in render_annotated
+    return self.render(context)
+  File "D:\Python35\lib\site-packages\django\template\defaulttags.py", line 167, in render
+    values = list(values)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 1231, in __iter__
+    raise InvalidQuery('Raw query must include the primary key')
+django.db.models.query_utils.InvalidQuery: Raw query must include the primary key
+2017-03-12 19:47:05,611
+                        [Thread-3:2412]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:48:20,842
+                        [Thread-7:1628]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:52:53,820
+                        [Thread-3:5612]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:53:48,264
+                        [Thread-3:5316]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 19:57:59,778
+                        [Thread-24:1096]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 20:01:29,961
+                        [Thread-3:6368]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 20:02:07,067
+                        [Thread-3:4624]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 20:02:47,951
+                        [Thread-9:4500]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-12 20:03:01,204
+                        [Thread-15:1104]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 13:58:58,377
+                        [Thread-3:5068]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 13:58:58,818
+                        [Thread-4:5488]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /favicon.ico
+2017-03-13 14:00:27,487
+                        [Thread-3:5796]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 14:18:10,384
+                        [Thread-3:1536]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 14:19:08,681
+                        [Thread-3:6000]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 14:20:02,397
+                        [Thread-3:5688]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 14:26:46,645
+                        [Thread-3:5800]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 15:11:20,703
+                        [Thread-2:4516]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 55, in index
+    recommend_list = article_list.values('title').filter('is_recommend' == 'True')
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1146, in build_filter
+    arg, value = filter_expr
+TypeError: 'bool' object is not iterable
+2017-03-13 15:12:24,136
+                        [Thread-2:5976]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 55, in index
+    recommend_list = article_list.values('title').filter('is_recommend' == 'True')
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1146, in build_filter
+    arg, value = filter_expr
+TypeError: 'bool' object is not iterable
+2017-03-13 15:38:35,141
+                        [Thread-2:3896]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 55, in index
+    recommend_list = article_list.values('title').filter('is_recommend' == 'True')
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1146, in build_filter
+    arg, value = filter_expr
+TypeError: 'bool' object is not iterable
+2017-03-13 15:39:02,921
+                        [Thread-7:5200]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 15:39:48,159
+                        [Thread-7:4188]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 15:40:39,200
+                        [Thread-7:4484]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 15:43:49,046
+                        [Thread-26:5516]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 15:54:21,307
+                        [Thread-3:5424]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
+2017-03-13 15:54:23,319
+                        [Thread-4:4732]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /0
+2017-03-13 15:56:44,854
+                        [Thread-2:6608]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /0
+2017-03-13 15:56:58,508
+                        [Thread-3:6808]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /0
+2017-03-13 15:57:17,705
+                        [Thread-4:4232]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /tagarticle/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 77, in tagArticle
+    article_list = Article.objects.filter(tag_id__name=tag)
+  File "D:\Python35\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1194, in build_filter
+    lookup_class = field.get_lookup(lookups[0])
+  File "D:\Python35\lib\site-packages\django\db\models\fields\related.py", line 688, in get_lookup
+    raise TypeError('Related Field got invalid lookup: %s' % lookup_name)
+TypeError: Related Field got invalid lookup: name
+2017-03-13 15:59:39,993
+                        [Thread-11:3284]
+                        [django.request:284]
+                        [base:handle_uncaught_exception]
+                        [ERROR]- Internal Server Error: /tagarticle/
+Traceback (most recent call last):
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python35\lib\site-packages\django\core\handlers\base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\blog_project\blog\views.py", line 77, in tagArticle
+    article_list = Article.objects.filter(tag_id__name=tag)
+  File "D:\Python35\lib\site-packages\django\db\models\manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "D:\Python35\lib\site-packages\django\db\models\query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "D:\Python35\lib\site-packages\django\db\models\sql\query.py", line 1194, in build_filter
+    lookup_class = field.get_lookup(lookups[0])
+  File "D:\Python35\lib\site-packages\django\db\models\fields\related.py", line 688, in get_lookup
+    raise TypeError('Related Field got invalid lookup: %s' % lookup_name)
+TypeError: Related Field got invalid lookup: name
+2017-03-13 16:06:21,918
+                        [Thread-21:7056]
+                        [django.request:182]
+                        [base:get_response]
+                        [WARNING]- Not Found: /js/nav.js
